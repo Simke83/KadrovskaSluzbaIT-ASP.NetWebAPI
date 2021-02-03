@@ -2,6 +2,13 @@
 
 • The project was built using ASP.NET Web Api,EntityFramework and jQuery on client side.
 
+• You will need the following tools:
+
+1. Visual Studio 2017-2019
+
+2. .NET Framework 4.6.1 and above
+
+
 
 • Follow these steps to get your development environment setup:
 
