@@ -1,4 +1,4 @@
-• Final project .NET Web Development course 2020
+• Final project .NET Web Development course 2020 - Kadrovska sluzba IT kompanije (Human Resource Department application)
 
 • The project was built using ASP.NET Web Api,EntityFramework and jQuery on client side.
 
