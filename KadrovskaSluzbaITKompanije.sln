@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KadrovskaSluzbaITKompanije", "KadrovskaSluzbaITKompanije\KadrovskaSluzbaITKompanije.csproj", "{57E78806-9315-4B68-B6DC-B5BCBB36F912}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KadrovskaSluzbaITKompanije.Tests", "KadrovskaSluzbaITKompanije.Tests\KadrovskaSluzbaITKompanije.Tests.csproj", "{3E148665-CA61-404C-B88E-EF11612902BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57E78806-9315-4B68-B6DC-B5BCBB36F912}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57E78806-9315-4B68-B6DC-B5BCBB36F912}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57E78806-9315-4B68-B6DC-B5BCBB36F912}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57E78806-9315-4B68-B6DC-B5BCBB36F912}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E148665-CA61-404C-B88E-EF11612902BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E148665-CA61-404C-B88E-EF11612902BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E148665-CA61-404C-B88E-EF11612902BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E148665-CA61-404C-B88E-EF11612902BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3AEB9E30-FD64-4A1D-B3BA-82D62F02249E}
+	EndGlobalSection
+EndGlobal

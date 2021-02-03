@@ -1,0 +1,110 @@
+﻿@section Scripts {
+    @Scripts.Render("~/Scripts/Skripta.js")
+}
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+
+
+<div id="Pocetni">
+    <h3>Korisnik nije prijavljen</h3>
+    <button type="submit" id="pocetnibutton1" class="btn btn-default">Prijava</button>
+    <button type="submit" id="pocetnibutton2" class="btn btn-default">Registracija</button>
+</div>
+
+
+<div id="prij" class="asd" style="display:none;">
+    <form method="post" action="post/" id="prijava">
+        <h3>Prijava korisnika</h3>
+        <div class="form-group">
+            <label>E-mail adresa</label>
+            <input class="form-control" type="text" id="korImee" />
+        </div>
+        <div class="form-group">
+            <label>Lozinka</label>
+            <input class="form-control" type="password" id="Loz" />
+        </div>
+        <div class="form-group">
+            <button type="submit" id="prijavadugme" class="btn btn-default">Prijavi se</button>
+            <button type="button" id="odustajanjeprijava" class="btn btn-default">Odustani</button>
+        </div>
+    </form>
+</div>
+
+<div id="regis" class="asd" style="display:none;">
+    <form method="post" action="post/" id="registracija">
+        <h3>Registracija korisnika</h3>
+        <div class="form-group">
+            <label>E-mail adresa</label>
+            <input class="form-control" type="text" id="korIme" />
+        </div>
+        <div class="form-group">
+            <label>Lozinka</label>
+            <input class="form-control" type="password" id="regLoz" />
+        </div>
+
+        <div class="form-group">
+            <label>Ponovi lozinku</label>
+            <input class="form-control" type="password" id="regLoz2" />
+        </div>
+
+        <div class="form-group">
+            <button type="submit" id="registracijadugme" class="btn btn-default">Registruj se</button>
+            <button type="button" id="odustajanjeregistracija" class="btn btn-default">Odustani</button>
+        </div>
+    </form>
+</div>
+
+<p id="info"></p>
+<br />
+<div class="row" id="odjava" style="display:none;text-align:center;">
+    <div>
+        <button class="btn btn-default" id="odjavise">Odjava</button>
+    </div>
+</div>
+
+<div id="Pretraga" style="display:none; text-align:center;">
+    <form method="post" action="post/" id="Pretrazi">
+        <h2>Pretraga Zaposlenih po plati:</h2>
+        <br />
+        <label>Najmanje: &nbsp</label><input type="number" id="najmanje" />
+        <label>&nbsp Najvise: &nbsp</label><input type="number" id="najvise" />
+        &nbsp&nbsp
+        <label><button type="submit" id="trazi" class="btn btn-default">Trazi</button></label>
+    </form>
+</div>
+
+<div class="row">
+
+    <p id="info"></p>
+    <br />
+
+    <div id="dataProduct">
+    </div>
+
+    <br />
+
+    <div id="formProductDiv" style="display:none">
+
+
+        <form method="post" action="post/" id="productForm">
+            <h2>Dodavanje novog Zaposlenog:</h2>
+            <p><label id="jedinica">Organizaciona jedinica:&nbsp&nbsp&nbsp&nbsp</label></p>
+            <div id="Rola">
+                <p><label>Rola: <input id="rola"></label></p>
+                <br />
+            </div>
+            <p><label>Ime i prezime: <input type="text" id="imeiprezime"></label></p>
+            <br />
+            <p><label>Godina rodjenja: <input type="number" min="1955" max="2000" id="godinarodjenja"></label></p>
+            <br />
+            <p><label>Godina zaposlenja: <input type="number" min="2000" max="2020" id="godinazaposlenja"></label></p>
+            <br />
+            <p><label>Plata: <input type="number" min="600" max="5000" id="plata"></label></p>
+            <br />
+            <p><button id="dodavforma" class="btn btn-default">Dodavanje</button><button id="odustform" class="btn btn-default">Odustajanje</button></p>
+            <button type="button" id="btnLista" style="display:none"></button>
+        </form>
+        
+    </div>
+    
+</div>
