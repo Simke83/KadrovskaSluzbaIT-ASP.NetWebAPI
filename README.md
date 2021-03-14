@@ -16,4 +16,4 @@ Open project in Visual Studio and run update-database in NPM console.
 
 Build solution in Visual Studio.
 
-Start Application with F5(Debug mode
+Start Application with F5(Debug mode)
