@@ -4,16 +4,16 @@
 
 • You will need the following tools:
 
-Visual Studio 2017-2019
+1) Visual Studio 2017-2019
 
-.NET Framework 4.6.1 and above
+2) .NET Framework 4.6.1 and above
 
 • Follow these steps to get your development environment setup:
 
-Clone the repository
+1) Clone the repository
 
-Open project in Visual Studio and run update-database in NPM console.
+2) Open project in Visual Studio and run update-database in NPM console.
 
-Build solution in Visual Studio.
+3) Build solution in Visual Studio.
 
-Start Application with F5(Debug mode)
+4) Start Application with F5(Debug mode)
