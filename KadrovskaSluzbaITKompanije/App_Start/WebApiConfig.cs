@@ -30,8 +30,8 @@ namespace KadrovskaSluzbaITKompanije
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
-            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling= Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-           
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+
 
             var container = new UnityContainer();
             container.RegisterType<IOrgJedinicaRepository, OrgJedinicaRepository>(new HierarchicalLifetimeManager());

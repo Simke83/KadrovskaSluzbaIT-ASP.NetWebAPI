@@ -13,7 +13,7 @@ namespace KadrovskaSluzbaITKompanije.Models
         [Required]
         [StringLength(40,ErrorMessage="Unesite vrednost do 40 karaktera!")]
         public string Ime { get; set; }
-        [Range(2010,2020,ErrorMessage ="Godina osnivanja mora biti u opsegu 2010-2020 !")]
+        [Range(2010,2020,ErrorMessage ="Godina osnivanja mora biti u opsegu 2010-2020!")]
         public int GodinaOsnivanja { get; set; }
         
         public ICollection<Zaposleni> Zaposleni{ get; set; }

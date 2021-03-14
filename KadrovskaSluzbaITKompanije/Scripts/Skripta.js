@@ -6,7 +6,6 @@
     var zaposleniEndpoint = "/api/Zaposleni/";
     var jediniceEndpoint = "/api/Jedinice/";
     var formAction = "Create";
-    var editingId;
 
     var token = null;
     var headers = {};
@@ -24,14 +23,13 @@
         $("#prij").css("display", "none");
     });
 
-
     $("#odustform").click(function () {
         refreshTable()
     });
 
     $("#odustajanjeprijava").click(function () {
         $("#korImee").val("");
-        $("#Loz").val("");
+        $("#loz").val("");
     });
 
     $("#odustajanjeregistracija").click(function () {
@@ -40,16 +38,30 @@
         $("#regLoz2").val("");
     });
 
-
     $("#btnLista").click(function () {
         var reqUrlJedinice = "http://" + host + jediniceEndpoint;
 
         $.getJSON(reqUrlJedinice, setDropdown, "json");
     });
 
+    $("#tradicija").click(function () {
+        var reqUrl = 'http://' + host + "/api/tradicija";
+        $.getJSON(reqUrl, Tradicija,"json");
+    });
+
+    $("#prikazZaposlenih").click(function () {
+        loadZaposleni()
+    });
+
+
     $("#btnLista").trigger("click");
 
-    $("body").on("click", "#btnDelete", deleteZaposleni);
+    $("body").on("click", "#btnDelete", obrisiZaposlenog);
+
+    //$("#btnDelete").click(function () {
+    //    obrisiZaposlenog()
+    //});
+
 
     function setDropdown(data, status) {
         if (status === "success") {
@@ -66,7 +78,7 @@
             $(selectList).insertAfter("#jedinica");
         }
     }
-
+   
 
     function loadZaposleni() {
         var requestUrl = 'http://' + host + zaposleniEndpoint;
@@ -76,7 +88,7 @@
 
     function setZaposleni(data, status) {
 
-        var $container = $("#dataProduct");
+        var $container = $("#OcitajZaposlene");
         $container.empty();
 
         if (status === "success") {
@@ -113,7 +125,7 @@
 
             div.append(table);
             if (token) {
-                $("#formProductDiv").css("display", "block");
+                $("#DodajZaposlenog").css("display", "block");
                 $("#Pretraga").css("display", "block");
             }
 
@@ -127,13 +139,13 @@
         }
     };
 
+
     $("#registracija").submit(function (e) {
         e.preventDefault();
 
         var korIme = $("#korIme").val();
         var loz1 = $("#regLoz").val();
         var loz2 = $("#regLoz2").val();
-
 
         var sendData = {
             "Email": korIme,
@@ -151,7 +163,7 @@
             $("#info").append("Uspešna registracija. Možete se prijaviti na sistem.");
             $("#prij").css("display", "block");
             $("#regis").css("display", "none");
-            $("#Pocetni").css("display", "none");
+            $("#pocetni").css("display", "none");
 
         }).fail(function (data) {
             alert("Greska prilikom registracije!");
@@ -160,16 +172,17 @@
 
     });
 
+
     $("#prijava").submit(function (e) {
         e.preventDefault();
 
-        var korImee = $("#korImee").val();
-        var Loz = $("#Loz").val();
+        var korIme = $("#korImee").val();
+        var loz = $("#loz").val();
 
         var sendData = {
             "grant_type": "password",
-            "username": korImee,
-            "password": Loz
+            "username": korIme,
+            "password": loz
         };
 
         $.ajax({
@@ -184,33 +197,34 @@
             $("#prij").css("display", "none");
             $("#regis").css("display", "none");
             $("#odjava").css("display", "block");
-            $("#Pocetni").css("display", "none");
-            refreshTable();
+            $("#pocetni").css("display", "none");
+            loadZaposleni();
 
         }).fail(function (data) {
             alert("Pogresan prilikom prijave!");
         });
     });
 
+
     $("#odjavise").click(function () {
         token = null;
         headers = {};
 
         $("#prij").css("display", "block");
-        $("#Pocetni").css("display", "block");
+        $("#pocetni").css("display", "block");
         $("#regis").css("display", "none");
         $("#odjava").css("display", "none");
         $("#info").empty();
         $("#sadrzaj").empty();
-        $("#formProductDiv").css("display", "none");
+        $("#DodajZaposlenog").css("display", "none");
         $("#Pretraga").css("display", "none");
 
-        refreshTable();
+        loadZaposleni();
 
     });
 
 
-    $("#productForm").submit(function (e) {
+    $("#dodajZaposlenog").submit(function (e) {
         e.preventDefault();
 
         if (token) {
@@ -241,7 +255,6 @@
             };
         }
 
-
         $.ajax({
             url: url,
             type: httpAction,
@@ -251,6 +264,7 @@
             .done(function (data, status) {
                 formAction = "Create";
                 refreshTable();
+                loadZaposleni();
             })
             .fail(function (data, status) {
                 alert("Greska prilikom dodavanja!!");
@@ -258,7 +272,7 @@
     });
 
 
-    function deleteZaposleni() {
+    function obrisiZaposlenog() {
         var deleteID = this.name;
 
         if (token) {
@@ -270,14 +284,15 @@
             headers: headers
         })
             .done(function (data, status) {
-                refreshTable();
+                loadZaposleni();
             })
             .fail(function (data, status) {
                 alert("Desila se greska!");
             });
     };
-    $("#Pretrazi").submit(function (e) {
 
+
+    $("#pretragaPoPlati").submit(function (e) {
         e.preventDefault();
 
         if (token) {
@@ -303,7 +318,7 @@
             $("#najmanje").val("");
             $("#najvise").val("");
 
-            var $container = $("#dataProduct");
+            var $container = $("#OcitajZaposlene");
             $container.empty();
 
             if (token) {
@@ -345,9 +360,46 @@
             }
         });
     }); 
-        
-            
 
+
+    function Tradicija(data,status) {
+        var $container = $("#OcitajZaposlene");
+        $container.empty();
+
+        if (status === "success") {
+
+            var div = $("<div></div>");
+            var h1 = $("<h1>Zaposleni</h1>");
+            div.append(h1);
+
+            var table = $("<table class='table table-bordered'></table>");
+            var header = $("<thead><tr><td>Ime</td><td>GodinaOsnivanja</td></tr>");
+           
+
+            table.append(header);
+            tbody = $("<tbody></tbody>");
+            for (i = 0; i < data.length; i++) {
+                var displayData = "<tr><td>" + data[i].Ime + "</td><td>" + data[i].GodinaOsnivanja + "</td><tr>";
+                tbody.append(displayData);
+            }
+            table.append(tbody);
+
+            div.append(table);
+            if (token) {
+                $("#DodajZaposlenog").css("display", "block");
+                $("#Pretraga").css("display", "block");
+            }
+
+            $container.append(div);
+        }
+        else {
+            div = $("<div></div>");
+            h1 = $("<h1>Greška prilikom preuzimanja Organizacionih jedinica!</h1>");
+            div.append(h1);
+            $container.append(div);
+        }
+    };
+        
 
     function refreshTable() {
         $("#rola").val('');
@@ -355,8 +407,6 @@
         $("#godinarodjenja").val('');
         $("#godinazaposlenja").val('');
         $("#plata").val('');
-
-        loadZaposleni();
     };
 
 });
